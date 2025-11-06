@@ -19,3 +19,17 @@ data:
 # {"hostname":"your_ipmi_host","username":"your_ipmi_user","password":"your_ipmi_password"}
 # To create your own secret, encode your JSON config:
 # echo -n '{"hostname":"192.168.1.100","username":"admin","password":"yourpassword"}' | base64
+
+# For Windows PowerShell, use:
+# Single server configuration
+# $config = @{
+#     hostname = "192.168.1.123"
+#     username = "USER" 
+#     password = "PASSWORD"
+# } | ConvertTo-Json -Compress
+
+# $base64Config = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($config))
+# Write-Host "Base64 encoded config: $base64Config"
+
+# One liner
+# [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes('{"hostname":"192.168.1.123","username":"USER","password":"PASSWORD"}'))
